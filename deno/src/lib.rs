@@ -10,7 +10,7 @@ use wasm_bindgen::prelude::*;
 pub async fn main(req: web_sys::Request) -> Result<web_sys::Response, JsError> {
     let req: http::Request = req.into();
 
-    let pkg_path = "/lib/client";
+    let pkg_path = "/assets/client";
     let lz_4 = "https://deno.land/x/lz4@v0.1.2/wasm.js";
     let head = format!(
         r#"<!DOCTYPE html>

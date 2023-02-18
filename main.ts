@@ -1,14 +1,26 @@
-import { serve } from "https://deno.land/std/http/server.ts"
-import { serveDir } from "https://deno.land/std/http/file_server.ts";
-import { decompress } from "https://deno.land/x/lz4/mod.ts"
-import { instantiate } from "./lib/deno.generated.js"
+import { serve } from "https://raw.githubusercontent.com/alephjs/aleph.js/main/server/mod.ts";
+import { instantiate } from "./assets/deno.generated.js";
+import presetUno from "https://esm.sh/@unocss/preset-uno@0.47.4";
 
-const { main } = await instantiate({ decompress })
+import * as uno from "https://esm.sh/@unocss/core@0.47.4";
+Reflect.set(globalThis, "UNOCSS_CORE", uno);
 
-serve((req) => {
-  const pathname = new URL(req.url).pathname
-  if (pathname.startsWith("/lib/client")) {
-    return serveDir(req)
-  }
-  return main(req)
-})
+const { main } = await instantiate();
+
+serve({
+  unocss: {
+    test: /\.rs$/,
+    presets: [presetUno()] 
+  },
+  baseUrl: import.meta.url,
+  middlewares: [
+    {
+      name: "Leptos",
+      fetch(req, ctx) {
+        const pathname = new URL(req.url).pathname;
+        if (pathname.startsWith("/assets")) return ctx.next();
+        return main(req);
+      },
+    },
+  ],
+});
