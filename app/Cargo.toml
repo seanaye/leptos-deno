@@ -1,0 +1,18 @@
+[package]
+name = "app"
+authors = [""]
+edition = "2021"
+version = "0.1.0"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+leptos = { git = "https://github.com/leptos-rs/leptos", default-features = false }
+web-sys = "0.3.61"
+
+
+[features]
+default = ["hydrate"]
+ssr = ["leptos/ssr"]
+hydrate = ["leptos/hydrate"]

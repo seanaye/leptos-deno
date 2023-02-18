@@ -1,0 +1,24 @@
+[package]
+name = "deno"
+version = "0.0.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+app = { path = "../app", default-features = false, features = [ "ssr" ] }
+
+console_error_panic_hook = "0.1"
+console_log = "0.2"
+leptos = { git = "https://github.com/leptos-rs/leptos", default-features = false, features = [ "ssr" ] }
+leptos_dom = { git = "https://github.com/leptos-rs/leptos", default-features = false, features = [ "ssr" ] }
+gloo-net = { git = "https://github.com/seanaye/gloo", branch = "seanaye/feat/serverside-http" }
+wasm-streams = "0.3.0"
+web-sys = "0.3.61"
+wasm-bindgen = "0.2.84"
+wasm-bindgen-futures = "0.4.34"
+futures = "0.3.26"
+js-sys = "0.3.61"
+futures-util = { version = "0.3.26", default-features = false }
+

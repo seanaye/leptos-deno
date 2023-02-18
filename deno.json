@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "wasmbuild:server": "deno run -A ../wasmbuild/main.ts -p deno",
+    "wasmbuild:client":  "deno run -A ../wasmbuild/main.ts -p client",
+    "wasmbuild": "deno task wasmbuild:server & deno task wasmbuild:client",
+    "start": "deno task wasmbuild && deno run -A compress.ts && deno run -A main.ts"
+  }
+}
