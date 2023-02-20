@@ -2,7 +2,7 @@ use leptos::*;
 use web_sys::console;
 
 /// A simple counter component.
-/// 
+///
 /// You can use doc comments like this to document your component.
 #[component]
 pub fn Counter(
@@ -10,7 +10,7 @@ pub fn Counter(
     /// The starting value for the counter
     initial_value: i32,
     /// The change that should be applied each time the button is clicked.
-    step: i32
+    step: i32,
 ) -> impl IntoView {
     let (value, set_value) = create_signal(cx, initial_value);
 

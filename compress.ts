@@ -2,7 +2,7 @@
 import { compress } from "https://deno.land/x/lz4/mod.ts"
 import { expandGlob } from "https://deno.land/std@0.175.0/fs/expand_glob.ts";
 
-for await (const { path } of expandGlob(new URL("assets/client**.wasm", import.meta.url))) {
+for await (const { path } of expandGlob(new URL("assets/**.wasm", import.meta.url))) {
   const data = await Deno.readFile(path)
   const originalSize = data.byteLength
   const tempFile = await Deno.makeTempFile()
