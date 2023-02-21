@@ -6,7 +6,6 @@ use futures_util::TryStreamExt;
 use gloo_net::http;
 use js_sys::Uint8Array;
 use leptos::{ssr::render_to_stream_with_prefix_undisposed_with_context, *};
-use leptos_meta::*;
 use wasm_bindgen::prelude::*;
 
 async fn build_stream_response(
@@ -40,7 +39,7 @@ async fn build_stream_response(
             runtime.dispose();
             tail.to_string()
         }))
-        .inspect(|html| gloo_console::log!("{}", html))
+        .inspect(|html| gloo_console::log!(html))
         .map(|html| Result::Ok(html.into_bytes()))
         .map_ok(|chunk| {
             let array = Uint8Array::new_with_length(chunk.len() as _);
@@ -79,7 +78,7 @@ pub async fn main(req: web_sys::Request) -> Result<web_sys::Response, JsError> {
             tokio::task::spawn_local(async move {
                 let (stream, runtime, scope) = render_to_stream_with_prefix_undisposed_with_context(
                     |cx| view! {cx, <App/>}.into_view(cx),
-                    move |cx| generate_head_metadata(cx).into(),
+                    move |_cx| "".into(),
                     |_cx| {},
                 );
                 build_stream_response(stream, runtime, scope).await
