@@ -26,7 +26,11 @@ dependencies = [
 name = "app"
 version = "0.1.0"
 dependencies = [
+ "gloo-console",
+ "gloo-net 0.2.6 (git+https://github.com/seanaye/gloo?branch=seanaye/feat/serverside-http)",
  "leptos",
+ "log",
+ "serde",
  "web-sys",
 ]
 
@@ -218,25 +222,6 @@ checksum = "1bfb12502f3fc46cca1bb51ac28df9d618d813cdc3d2f25b9fe775a34af26bb3"
 dependencies = [
  "generic-array",
  "typenum",
-]
-
-[[package]]
-name = "deno"
-version = "0.0.0"
-dependencies = [
- "app",
- "console_error_panic_hook",
- "console_log",
- "futures 0.3.26",
- "futures-util",
- "gloo-net 0.2.6 (git+https://github.com/seanaye/gloo?branch=seanaye/feat/serverside-http)",
- "js-sys",
- "leptos",
- "leptos_dom",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "wasm-streams",
- "web-sys",
 ]
 
 [[package]]
@@ -440,6 +425,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "gloo-console"
+version = "0.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "82b7ce3c05debe147233596904981848862b068862e9ec3e34be446077190d3f"
+dependencies = [
+ "gloo-utils 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
+ "js-sys",
+ "serde",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
 name = "gloo-net"
 version = "0.2.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -598,8 +596,7 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "leptos"
-version = "0.2.0-alpha"
-source = "git+https://github.com/leptos-rs/leptos#46d6e3f78c1bd48436507e015578ea3d06d99c54"
+version = "0.2.0-beta"
 dependencies = [
  "cfg-if",
  "leptos_config",
@@ -613,8 +610,7 @@ dependencies = [
 
 [[package]]
 name = "leptos_config"
-version = "0.2.0-alpha"
-source = "git+https://github.com/leptos-rs/leptos#46d6e3f78c1bd48436507e015578ea3d06d99c54"
+version = "0.2.0-beta"
 dependencies = [
  "config",
  "fs",
@@ -626,8 +622,7 @@ dependencies = [
 
 [[package]]
 name = "leptos_dom"
-version = "0.2.0-alpha"
-source = "git+https://github.com/leptos-rs/leptos#46d6e3f78c1bd48436507e015578ea3d06d99c54"
+version = "0.2.0-beta"
 dependencies = [
  "async-recursion",
  "cfg-if",
@@ -653,8 +648,7 @@ dependencies = [
 
 [[package]]
 name = "leptos_macro"
-version = "0.2.0-alpha"
-source = "git+https://github.com/leptos-rs/leptos#46d6e3f78c1bd48436507e015578ea3d06d99c54"
+version = "0.2.0-beta"
 dependencies = [
  "cfg-if",
  "convert_case",
@@ -673,9 +667,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "leptos_meta"
+version = "0.2.0-beta"
+dependencies = [
+ "cfg-if",
+ "leptos",
+ "tracing",
+ "typed-builder",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
 name = "leptos_reactive"
-version = "0.2.0-alpha"
-source = "git+https://github.com/leptos-rs/leptos#46d6e3f78c1bd48436507e015578ea3d06d99c54"
+version = "0.2.0-beta"
 dependencies = [
  "base64 0.21.0",
  "cfg-if",
@@ -695,8 +700,7 @@ dependencies = [
 
 [[package]]
 name = "leptos_server"
-version = "0.2.0-alpha"
-source = "git+https://github.com/leptos-rs/leptos#46d6e3f78c1bd48436507e015578ea3d06d99c54"
+version = "0.2.0-beta"
 dependencies = [
  "ciborium",
  "form_urlencoded",
@@ -1082,6 +1086,28 @@ dependencies = [
  "itoa",
  "ryu",
  "serde",
+]
+
+[[package]]
+name = "server"
+version = "0.0.0"
+dependencies = [
+ "app",
+ "console_error_panic_hook",
+ "console_log",
+ "futures 0.3.26",
+ "futures-util",
+ "gloo-console",
+ "gloo-net 0.2.6 (git+https://github.com/seanaye/gloo?branch=seanaye/feat/serverside-http)",
+ "js-sys",
+ "leptos",
+ "leptos_dom",
+ "leptos_meta",
+ "tokio",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "wasm-streams",
+ "web-sys",
 ]
 
 [[package]]

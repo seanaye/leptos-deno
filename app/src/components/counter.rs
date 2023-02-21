@@ -12,6 +12,8 @@ pub fn Counter(
     /// The change that should be applied each time the button is clicked.
     step: i32,
 ) -> impl IntoView {
+    gloo_console::log!("test");
+
     let (value, set_value) = create_signal(cx, initial_value);
 
     view! { cx,
