@@ -3,7 +3,6 @@
     "wasmbuild:server": "deno run -A ../wasmbuild/main.ts -p server --out ./assets",
     "wasmbuild:client":  "deno run -A ../wasmbuild/main.ts -p client --out ./assets",
     "wasmbuild": "deno task wasmbuild:server & deno task wasmbuild:client && deno run -A patch.ts",
-    "build": "deno task wasmbuild && deno run -A compress.ts",
     "start": "deno run -A main.ts"
   }
 }

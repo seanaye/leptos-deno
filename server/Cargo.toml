@@ -11,9 +11,9 @@ app = { path = "../app", default-features = false, features = [ "ssr" ] }
 
 console_error_panic_hook = "0.1"
 console_log = "0.2"
-leptos = { path = "../../leptos/leptos/", default-features = false, features = [ "ssr" ] }
-leptos_dom = { path = "../../leptos/leptos_dom/", default-features = false, features = [ "ssr" ] }
-leptos_meta = { path = "../../leptos/meta", default-features = false, features = ["ssr"] }
+leptos = { git = "http://github.com/leptos-rs/leptos", default-features = false, features = [ "ssr" ] }
+leptos_dom = { git = "http://github.com/leptos-rs/leptos", default-features = false, features = [ "ssr" ] }
+leptos_meta = { git = "http://github.com/leptos-rs/leptos", default-features = false, features = ["ssr"] }
 gloo-net = { git = "https://github.com/seanaye/gloo", branch = "seanaye/feat/serverside-http" }
 tokio = { version = "1", features = ["rt"] }
 wasm-streams = "0.3.0"
