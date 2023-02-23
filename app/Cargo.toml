@@ -8,12 +8,16 @@ version = "0.1.0"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-leptos = { git = "http://github.com/leptos-rs/leptos", default-features = false }
+# leptos = { git = "http://github.com/leptos-rs/leptos", default-features = false }
+leptos = { path = "../../leptos/leptos/", default-features = false }
 web-sys = { version = "0.3.61", features = ["AbortController"] }
-gloo-net = { git = "https://github.com/seanaye/gloo", branch = "seanaye/feat/serverside-http" }
+# gloo-net = { path = "../../gloo/crates/net/" }
+gloo-net = "0.2.6"
 serde = { version = "1.0.152", features = ["derive"] }
 log = "0.4.17"
 gloo-console = "0.2.3"
+wasm-bindgen = "0.2.84"
+gloo-timers = { version = "0.2.6", features = ["futures"] }
 
 
 [features]

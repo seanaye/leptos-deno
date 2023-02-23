@@ -10,7 +10,8 @@ crate-type = ["cdylib", "rlib"]
 app = { path = "../app", default-features = false, features = [ "hydrate" ] }
 console_error_panic_hook = "0.1"
 console_log = "0.2"
-leptos = { git = "http://github.com/leptos-rs/leptos", features = [ "hydrate" ] }
+# leptos = { git = "http://github.com/leptos-rs/leptos", features = [ "hydrate" ] }
+leptos = { path = "../../leptos/leptos/", features = [ "hydrate" ] }
 log = "0.4"
 wasm-bindgen = "0.2.84"
 web-sys = "0.3.61"
