@@ -16,7 +16,7 @@ leptos_dom = { git = "http://github.com/leptos-rs/leptos", default-features = fa
 # leptos = { path = "../../leptos/leptos/", default-features = false, features = [ "ssr" ] }
 # leptos_dom = { path = "../../leptos/leptos_dom/", default-features = false, features = [ "ssr" ] }
 # gloo-net = { path = "../../gloo/crates/net/" }
-gloo-net = { git = "https://github.com/seanaye/gloo/crates/net", branch = "seanaye/feat/serverside-http" }
+gloo-net = { git = "https://github.com/seanaye/gloo", branch = "seanaye/feat/serverside-http" }
 tokio = { version = "1", features = ["rt"] }
 wasm-streams = "0.3.0"
 web-sys = "0.3.61"
