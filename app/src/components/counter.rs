@@ -13,14 +13,12 @@ pub fn Counter(
     /// The change that should be applied each time the button is clicked.
     step: i32,
 ) -> impl IntoView {
-    gloo_console::log!("test");
-
     let (value, set_value) = create_signal(cx, initial_value);
 
     let resource2 = create_resource(cx, move || {}, move |_| async move {
-        let s = 5000u32;
+        let s = 2000u32;
         gloo_timers::future::TimeoutFuture::new(s).await;
-        format!("waited {s} seconds")
+        format!("waited {s} ms")
         // "test".to_string()
     });
 

@@ -39,7 +39,6 @@ async fn build_stream_response(
             runtime.dispose();
             tail.to_string()
         }))
-        .inspect(|html| gloo_console::log!(html))
         .map(|html| Result::Ok(html.into_bytes()))
         .map_ok(|chunk| {
             let array = Uint8Array::new_with_length(chunk.len() as _);
