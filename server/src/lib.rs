@@ -71,20 +71,10 @@ pub async fn main(req: web_sys::Request) -> Result<web_sys::Response, JsError> {
     console_error_panic_hook::set_once();
     type Result<T> = std::result::Result<T, JsValue>;
 
-    let local = tokio::task::LocalSet::new();
-
-    local
-        .run_until(async move {
-            tokio::task::spawn_local(async move {
-                let (stream, runtime, scope) = render_to_stream_with_prefix_undisposed_with_context(
-                    |cx| view! {cx, <App/>}.into_view(cx),
-                    move |_cx| "".into(),
-                    |_cx| {},
-                );
-                build_stream_response(stream, runtime, scope).await
-            })
-            .await
-            .expect("an error occurred")
-        })
-        .await
+    let (stream, runtime, scope) = render_to_stream_with_prefix_undisposed_with_context(
+        |cx| view! {cx, <App/>}.into_view(cx),
+        move |_cx| "".into(),
+        |_cx| {},
+    );
+    build_stream_response(stream, runtime, scope).await
 }
